@@ -19,3 +19,17 @@ classDiagram
         +Date dataCadastro
         +String id
     }
+
+
+```mermaid
+classDiagram
+    class Pessoa {
+        +String nome
+        +int idade
+        +falar()
+    }
+    class Aluno {
+        +String matricula
+        +estudar()
+    }
+    Pessoa <|-- Aluno
