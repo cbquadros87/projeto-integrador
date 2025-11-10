@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     class Pessoa {
         +String nome
@@ -76,4 +77,3 @@ classDiagram
     Fornecedor "1" --> "1" PessoaJuridica
     PessoaJuridica "1" --> "1" Fornecedor
     Professor "N" --> "N" Disciplina
-
