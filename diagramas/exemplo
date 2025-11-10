@@ -1,1 +1,79 @@
+classDiagram
+    class Pessoa {
+        +String nome
+        +String telefone
+        +String email
+        +Date dataCadastro
+        +String id
+    }
+
+    class PessoaFisica {
+        +String cpf
+        +Date dataCadastro
+        +String statusCadastro
+        +String id
+    }
+
+    class PessoaJuridica {
+        +String cnpj
+        +String razaoSocial
+        +String nomeFantasia
+        +String cnae
+        +String statusCadastro
+        +String id
+    }
+
+    class Professor {
+        +String id
+        +PessoaFisica pessoaFisica
+        +String formacao
+        +String areaAtuacao
+        +String statusCadastro
+        +List~String~ turnosDisponiveis
+        +List~Disciplina~ disciplinas
+        +boolean validarDados()
+        +void salvarCadastro()
+        +void enviarConfirmacao()
+    }
+
+    class Aluno {
+        +PessoaFisica pessoaFisica
+        +String matricula
+        +String curso
+        +String turno
+        +int periodo
+        +String statusMatricula
+        +String id
+        +boolean validarDados()
+        +void salvarCadastro()
+        +void enviarConfirmacao()
+    }
+
+    class Fornecedor {
+        +String id
+        +PessoaJuridica pessoaJuridica
+        +String ramoAtuacao
+        +String statusCadastro
+        +List~PessoaFisica~ subordinadosAutorizados
+        +boolean validarDados()
+        +void salvarCadastro()
+        +void enviarConfirmacao()
+    }
+
+    class Disciplina {
+        +String id
+        +String nome
+        +String turno
+    }
+
+    %% Herança
+    PessoaFisica --|> Pessoa
+    PessoaJuridica --|> Pessoa
+
+    %% Associações
+    Professor "1" --> "1" PessoaFisica
+    Aluno "1" --> "1" PessoaFisica
+    Fornecedor "1" --> "1" PessoaJuridica
+    PessoaJuridica "1" --> "1" Fornecedor
+    Professor "N" --> "N" Disciplina
 
